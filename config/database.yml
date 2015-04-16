@@ -1,0 +1,28 @@
+development:
+  adapter: postgresql
+  database: material_development
+  username: user
+  password: password
+  host: 127.0.0.1
+  port: 5439
+  encoding: UTF8
+
+
+test:
+  adapter: postgresql
+  database: material_test
+  username: user 
+  password: password
+  host: 127.0.0.1
+  port: 5439
+  encoding: UTF8
+  
+
+production:
+  adapter: postgresql
+  database: material_production
+  username: user
+  password: password
+  host: 127.0.0.1
+  port: 5439
+  encoding: UTF8

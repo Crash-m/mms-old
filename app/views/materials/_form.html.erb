@@ -1,0 +1,55 @@
+<%= form_for @material do |f| %>
+ 
+  <% if @material.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@material.errors.count, "error") %> prohibited
+        this material from being saved:
+      </h2>
+      <ul>
+        <% @material.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+<table class="wikitable" width="100%">
+  <tr>
+    <th>Category</th>
+	<th>Sub-Category</th>
+	<th>Measurements</th>
+	<th>Product</th>
+	<th>Product #</th>
+	<th>Product Description</th>
+	<th>UOM</th>
+	<th>Price</th>
+	<th>In Stock</th>
+	<th>Vendor</th>
+	<th>Total</th>
+  </tr>
+  <tr>
+    <td><%= f.text_field :category, :size=>"10" %></td>
+	<td><%= f.text_field :subcategory, :size=>"10" %></td>
+	<td><%= f.text_field :measurements, :size=>"10" %></td>
+	<td><%= f.text_field :product, :size=>"10" %></td>
+	<td><%= f.text_field :product_number, :size=>"10" %></td>
+	<td><%= f.text_field :product_description %></td>
+	<td><%= f.text_field :uom, :size=>"10" %></td>
+	<td><%= f.text_field :price, :size=>"10" %></td>
+	<td><%= f.text_field :in_stock, :size=>"10" %></td>
+	<td><%= f.text_field :vendor, :size=>"10" %></td>
+	<td><%= f.text_field :total, :size=>"10" %></td>
+  </tr>
+ </table>
+
+ <br />
+ <div class="stack col-md-12 l-adjust">
+		<br>
+  		<%= f.submit %>
+
+
+  	</div>
+<% end %>
+
+

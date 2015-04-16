@@ -1,0 +1,94 @@
+		<div class="nav">
+			<div class="container">
+				<ul class="pull-left">
+					<li class="dropmenu_all"><%= link_to 'List all Materials', materials_path %></li>
+				</ul>
+				<ul class="pull-right">
+					<li class="dropmenu"><a href="#">Show All</a></li>
+				</ul>
+			</div>
+
+		</div>
+		<div class="container">
+			<div class="jumbotron">
+				<div>
+					<h1 align="center" >Big G Inventory Search</h1>
+					<p></p>
+				</div>
+				<table align="center">
+					
+					<br>
+					<tr>
+						<td class="text_field">
+							<form>
+								<input type="text" name="" size="25%" class="text_field">
+						</td>
+						<td>
+							<div>
+								<%= image_submit_tag("search_box_icon.png", class: 'searchbox') %> 
+							</div>
+						</td>	
+					</form>
+				
+
+					</tr>
+					</table>
+			</div>
+		</div>
+	<div class="container frame returns">
+		<table class="wikitable">
+			<tr width="100%">
+				<th>ID</th>
+				<th>Category</th>
+				<th>Sub-Category</th>
+				<th>Measurements</th>
+				<th>Product</th>
+				<th>Product #</th>
+				<th>Product Description</th>
+				<th>PPU</th>
+				<th>Price</th>
+				<th>In Stock</th>
+				<th width="12%">Vendor</th>
+				<th width="8%">Total</th>
+				<th width="7%"></th>
+				<th width="7%"></th>
+				<th width="7%"></th>
+			</tr>
+ 
+			<% @materials.each do |material| %>
+			<tr>
+				<td><%= material.id %></td>
+				<td><%= material.category %></td>
+				<td><%= material.subcategory %></td>
+				<td><%= material.measurements %></td>
+				<td><%= material.product %></td>
+				<td><%= material.product_number %></td>
+				<td><%= material.product_description %></td>
+				<td><%= material.ppu %></td>
+				<td>$<%= material.price%></td>
+				<td><%= material.in_stock %></td>
+				<td><%= material.vendor %></td>
+				<td>$<%= material.total %></td>
+				<td><%= link_to 'Show', material_path(material) %></td>
+				<td><%= link_to 'Edit', edit_material_path(material) %></td>
+				<td><%= link_to 'Delete', material_path(material),
+						method: :delete,
+						data: { confirm: "Are you sure you want to destroy this data?" } %></td>
+			</tr>
+		  <% end %>
+		</table>
+	</div>
+		<footer>
+			<div class="nav">
+			<div class="container">
+				<ul class="pull-left">
+					<li>Welcome to BIG G Material Management System.</li>
+				</ul>
+				<ul class="pull-right">
+					<li>Patent Pending</li>
+				</ul>
+			</div>
+			</div>
+		</footer>
+
+		

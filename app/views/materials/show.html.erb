@@ -1,0 +1,48 @@
+<%= render 'header' %>
+<div class='jumbotron'>
+	<div class="container">
+		<h1 align='center'>Material Details</h1>
+	</div>
+</div>
+<div class="col-md-10 col-md-offset-1" align="center">
+		<br />
+		<br />
+		<table class="wikitable">
+		<tr>
+			<th>Category</th>
+			<th>Sub-Category</th>
+			<th>Measurements</th>
+			<th>Product</th>
+			<th>Product #</th>
+			<th>Product Description</th>
+			<th>PPU</th>
+			<th>Price</th>
+			<th>In Stock</th>
+			<th>Vendor</th>
+			<th>Total</th>
+		</tr>
+		<tr>
+				<td width="5%"><%= @material.category %></td>
+				<td width="5%"><%= @material.subcategory %></td>
+				<td width="5%"><%= @material.measurements %></td>
+				<td width="20%"><%= @material.product %></td>
+				<td width="4%"><%= @material.product_number %></td>
+				<td width="20%"><%= @material.product_description %></td>
+				<td width="3%"><%= @material.ppu %></td>
+				<td width="5%">$<%= @material.price%></td>
+				<td width="5%"><%= @material.in_stock %></td>
+				<td width="5%"><%= @material.vendor %></td>
+				<td width="5%">$<%= @material.total %></td>
+		</tr>
+		</table>
+		<br>
+		<br>
+</div>
+<br />
+<br />
+
+<div class="stacks col-md-offset-1 col-md-10">
+	<div><%= link_to 'Back to Edit', edit_material_path(@material) %></div>
+	<div><%= link_to 'Back to Search', '/' %></div>
+</div>
+<%= render 'footer'%>

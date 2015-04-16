@@ -1,0 +1,11 @@
+
+<h1>Import Material XLS</h1>
+<table>
+	<tr>
+		<td><%= form_tag import_materials_path, multipart: true do %></td>
+		<td><%= file_field_tag :file %></td>
+		<td><%= submit_tag "Import" %></td>
+	</tr>
+</table>
+<% end %>
+

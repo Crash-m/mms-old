@@ -1,0 +1,1 @@
+rails generate model Material category:text subcategory:text measurements:text product:text product_number:text product_description:text uom:text price:text in_stock:text vendor:text total:text

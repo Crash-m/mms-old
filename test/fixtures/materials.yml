@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyText
+  subcategory: MyText
+  measurements: MyText
+  product: MyText
+  product_number: MyText
+  product_description: MyText
+  uom: MyText
+  price: MyText
+  in_stock: MyText
+  vendor: MyText
+  total: MyText
+
+two:
+  category: MyText
+  subcategory: MyText
+  measurements: MyText
+  product: MyText
+  product_number: MyText
+  product_description: MyText
+  uom: MyText
+  price: MyText
+  in_stock: MyText
+  vendor: MyText
+  total: MyText

@@ -1,0 +1,75 @@
+<%= render 'header' %>
+<div class="jumbotron">
+			<div class="container">
+				<div>
+					<h1 align="center" >Material Inventory Search</h1>
+				</div>
+				<br>
+				<br>
+				<table align="center">
+				<%= form_tag materials_path, :method => 'get' do %>
+				<%= hidden_field_tag :direction, params[:direction] %>
+				<%= hidden_field_tag :sort, params[:sort] %>		
+					<tr>
+						<td>
+						    <%= text_field_tag :query, params[:query], :size=>"35" %>
+						</td>
+						<td>
+    						<%= image_submit_tag("search_box_icon.png", class: 'searchbox')%> 
+						</td>
+					</tr>
+					<% end %>
+					</table>
+	</div>
+	<div class="container pass"><pass class="dropmenu pass">List All Inventory</pass>
+	</div>
+</div>
+	<div class="col-md-offset-1 col-md-10 frame returns">
+		
+		<pass class="col-md-2"><%= link_to 'Add New Material', new_material_path %></pass>
+		
+		<pass class="col-md-8"><%= paginate @materials %></pass>
+		
+		<pass class="col-md-2"><%= link_to 'Clear Filters', '/' %></pass>
+		
+	</div>
+</div>
+ <div class="col-md-offset-1 col-md-10">
+ 	<table class="wikitable">
+ 			<tr>
+ 				<th><%= sortable "category" %></th>
+ 				<th><%= sortable "measurements", "Size" %></th>
+ 				<th><%= sortable "product" %></th>
+ 				<th><%= sortable "product_number", "P/N" %></th>
+ 				<th><%= sortable "product_description", "Description"  %></th>
+ 				<th><%= sortable "uom", "UOM" %></th>
+ 				<th><%= sortable "price" %></th>
+ 				<th><%= sortable "in_stock", "Stock" %></th>
+ 				<th><%= sortable "vendor" %></th>
+ 				<th><%= sortable "total" %></th>
+ 				<th></th>
+ 				<th></th>
+ 				<th></th>
+ 			</tr>
+			<% @materials.each do |material| %>
+			<tr>
+				<td width="8%"><%= material.category %></td>
+				<td width="8%"><%= material.measurements %></td>
+				<td width="23%"><%= material.product %></td>
+				<td width="5%"><%= material.product_number %></td>
+				<td width="31%"><%= material.product_description %></td>
+				<td width="3%"><%= material.uom %></td>
+				<td align="right" width="5%"><%= number_to_currency(material.price) %></td>
+				<td align="center" width="5%"><%= material.in_stock.to_i %></td>
+				<td width="4%"><%= material.vendor %></td>
+				<td align="right" width="4%"><%= number_to_currency(material.price.to_f * material.in_stock.to_f) %></td>
+				<td width="2%"><%= link_to 'Show', material_path(material) %></td>
+				<td width="2%"><%= link_to 'Edit', edit_material_path(material) %></td>
+				<td width="2%"><%= link_to 'Delete', material_path(material),
+						method: :delete,
+						data: { confirm: "Are you sure you want to destroy this data?" } %></td>
+			</tr>
+		  <% end %>
+		</table>
+</div>
+<%= render 'footer'%>

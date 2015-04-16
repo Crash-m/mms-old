@@ -1,0 +1,286 @@
+/* {
+	border: 1px dashed black;
+}
+*/
+/* 
+div {
+	border: 1px dashed black;
+	position:relative;
+	margin:1em;
+
+}
+*/
+ul {
+	margin-bottom:0px;
+	list-style:none;
+}
+body {
+	padding-top:40px;
+	padding-bottom:30px;
+	line-height:1.25;
+}
+div.displaybox {
+	height:35em;
+	width:100%;
+	background-color: #bbbbbb;
+	border-radius:5px;
+}
+html {
+	height:100%;
+	padding-bottom:30px;
+}
+body {
+	height:100%;
+}
+div.header > .navbar-brand.pull-left {
+	float:left;
+	padding-left:0px;	
+	padding-right:10px;
+}
+div.header > .navbar-brand.pull-right {
+	float:right;
+	padding-left:10px;	
+	padding-right:0px;
+	margin-right:0px;
+}
+footer{
+	position:absolute;
+	clear:all;
+	bottom:0;
+	left:0;
+	width:100%;
+}
+footer>.nav>.container {
+	padding-top:0;
+	padding-bottom:0;
+	margin-bottom:0;
+
+}
+footer>.nav {
+	padding-top:0;
+	padding-bottom:0;
+	margin-bottom:0;
+}
+footer>.nav>.col-md-offset-1.col-md-10 >.pull-left {
+	padding-top:0;
+	padding-bottom:0;
+	margin-bottom:0;
+	margin-top:5px;
+}
+footer>.nav>.col-md-offset-1.col-md-10 >.pull-right {
+	padding-top:0;
+	padding-bottom:0;
+	margin-bottom:0;
+	margin-top:5px;
+}
+footer>.nav>.col-md-offset-1.col-md-10 >.pull-right>li {
+	padding-left:0;
+	padding-top:0;
+	padding-bottom:0;
+}
+footer>.nav> .col-md-offset-1.col-md-10 > .pull-left > li {
+	padding-left:0;
+	padding-top:0;
+	padding-bottom:0;
+}
+.pull-left > li{
+	display:inline-block;
+}
+.pull-right > li{
+	display:inline-block;
+}
+.A1 {
+	height: 50px;
+	width: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	background-color: #0000ff;
+	margin-left:1em;
+	margin-top:1em;
+}
+.A2 {
+	height: 300px;
+	width: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	background-color: #0000ff;
+	margin-left:1em;
+	margin-top:1em;
+}
+.B {
+	position:relative;
+	height: 30px;
+	width: 100%;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin-left:3em;
+}
+
+.searchbox {
+	margin-top:1px;
+	margin-bottom:1px;
+	margin-left:1px;
+	margin-right:1px;
+	padding-left:26px;
+	padding-right:26px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	background: #444444;
+	border-color: #444444;
+	border:none;
+	border-radius: 4px;
+	box-sizing: content-box;
+	line-height: normal
+}
+input[type = "text"] {
+	margin:2px;
+	margin-bottom:2px;
+	line-height:inherit;
+	height:inherit;
+	display:inline-block;
+	font-size:"14px";
+	color:#555;
+	virtical-align:middle;
+	border-radius:4px;
+}
+input, textarea {
+	width:inherit;
+}
+/*div.returns {
+	display:none;
+	margin-top:2em;
+}*/
+
+.frm > table{
+	display:inline-block;
+}
+li.dropmenu:hover {
+	text-decoration:none;
+}
+li.dropmenu > a {
+	text-decoration:none;
+	font-family:"Impact";
+}
+li.dropmenu_all {
+	display:inline-block;
+}
+.narrow {
+	padding:0px;
+
+}
+.nav > div.narrow > ul.narrow{
+	padding-top:0px;
+	padding-bottom:0px;	
+}
+.pull-center {
+	list-style:none;
+	display:inline-block;
+	margin-left:auto;
+	margin-right:auto;
+	left:20%;
+	padding:0px;
+}
+.pagination a, .pagination span.current, .pagination span.gap {
+    padding: 0px;
+    margin:0px
+    text-decoration: none;
+    background-color: white;
+}
+.pagination {
+	margin:0px;
+
+.first{
+    padding : 0;
+    float: none;
+    border: none;
+}
+.prev {
+    padding : 0;
+    float: none;
+    border: none;
+}
+.page{
+    padding : 0;
+    float: none;
+    border: none;
+}
+.next{
+    padding : 0;
+    float: none;
+    border: none;
+}
+.last{
+    padding : 0;
+    float: none;
+    border: none;
+}
+}
+table > ul.narrow > li {
+	align-content:center;
+	text-align:center;
+}
+pass.col-md-2:nth-child(1) {
+	position:relative;
+	margin:0px;
+	padding-left:0px;
+}
+pass.col-md-2:nth-child(3) {
+	position:relative;
+	text-align:right;
+	margin:0px;
+	padding-right:0px;
+}
+pass.col-md-8 {
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+div.pass {
+	text-align:right;
+}
+pass {
+	font-size:18px;
+}
+pass.dropmenu:hover {
+	color:#49AFCD;
+}
+pass.pass {
+	display:none;
+}
+p.navbar-brand {
+	margin:0px;
+	padding:15px;	
+}
+.wikitable th .current {
+  padding-right: 16px;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.wikitable th .asc {
+  background-image: url(up_arrow.gif);
+}
+.wikitable th .desc {
+  background-image: url(down_arrow.gif);
+}
+.col-md-8.l-adjust {
+	position:relative;
+	clear:both;
+	margin:0px;
+	padding-left:0px;
+}
+.stacks {
+	position:relative;
+	clear:both;
+}
+.stacks > div {
+	display:inline-block;
+	margin-right:20px;
+	padding-left:0px;
+	padding-right:5px;
+}
+.col-md-12.l-adjust {
+	position:relative;
+	clear:both;
+	margin:0px;
+	padding-left:0px;
+}

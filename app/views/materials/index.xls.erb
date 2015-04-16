@@ -1,0 +1,30 @@
+		<table>
+			<tr>
+				<th>Category</th>
+				<th>Sub-Category</th>
+				<th>Measurements</th>
+				<th>Product</th>
+				<th>Product #</th>
+				<th>Product Description</th>
+				<th>UOM</th>
+				<th>Price</th>
+				<th>In Stock</th>
+				<th>Vendor</th>
+				<th>Total</th>
+			</tr>
+			<% @materials.each do |material| %>
+			<tr>
+				<td> <%= material.group %> </td>
+				<td><%= material.subgroup %></td>
+				<td><%= material.measurements %></td>
+				<td><%= material.product %></td>
+				<td><%= material.product_number %></td>
+				<td><%= material.product_description %></td>
+				<td><%= material.ppu %></td>
+				<td>$<%= material.price%></td>
+				<td><%= material.in_stock %></td>
+				<td><%= material.vendor %></td>
+				<td>$<%= material.total %></td>
+			</tr>
+			<% end %>
+		</table>
