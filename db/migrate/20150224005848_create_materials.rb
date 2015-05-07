@@ -8,10 +8,11 @@ class CreateMaterials < ActiveRecord::Migration
       t.text :product_number
       t.text :product_description
       t.text :uom
-      t.text :price
+      t.float :price
       t.text :in_stock
       t.text :vendor
-      t.text :total
+      t.float :total
+      t.float :markup
 
       t.timestamps
     end

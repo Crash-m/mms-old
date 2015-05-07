@@ -15,11 +15,12 @@
 			<th>Product</th>
 			<th>Product #</th>
 			<th>Product Description</th>
-			<th>PPU</th>
+			<th>UOM</th>
 			<th>Price</th>
 			<th>In Stock</th>
 			<th>Vendor</th>
 			<th>Total</th>
+			<th>Markup(15%)</th>
 		</tr>
 		<tr>
 				<td width="5%"><%= @material.category %></td>
@@ -28,11 +29,12 @@
 				<td width="20%"><%= @material.product %></td>
 				<td width="4%"><%= @material.product_number %></td>
 				<td width="20%"><%= @material.product_description %></td>
-				<td width="3%"><%= @material.ppu %></td>
-				<td width="5%">$<%= @material.price%></td>
+				<td width="3%"><%= @material.uom %></td>
+				<td width="5%"><%= @material.price%></td>
 				<td width="5%"><%= @material.in_stock %></td>
 				<td width="5%"><%= @material.vendor %></td>
-				<td width="5%">$<%= @material.total %></td>
+				<td width="3%"><%= @material.total %></td>
+				<td width="2%"><%= @material.markup %></td>
 		</tr>
 		</table>
 		<br>
@@ -45,4 +47,51 @@
 	<div><%= link_to 'Back to Edit', edit_material_path(@material) %></div>
 	<div><%= link_to 'Back to Search', '/' %></div>
 </div>
-<%= render 'footer'%>
+
+<div class="stacks col-md-offset-1 col-md-10">
+	<div><table>
+		<tr>
+			<td>Enter quantity</td>
+			<td></td>
+			<td><%= @material.price %></td>
+		</tr>
+	</table></div>
+</div>
+<div class="stacks col-md-offset-1 col-md-10">
+	<div>
+		<body bgcolor= "#000000" text= "gold">
+		<form name="calculator" >
+		<table>
+		<tr>
+			<td><input type="button" value="1" onClick="document.calculator.ans.value+='1'"></td>
+			<td><input type="button" value="2" onClick="document.calculator.ans.value+='2'"></td>
+			<td><input type="button" value="3" onClick="document.calculator.ans.value+='3'"></td>
+			<td><input type="button" value="+" onClick="document.calculator.ans.value+='+'"></td>
+		</tr>	
+		<tr>
+			<td><input type="button" value="4" onClick="document.calculator.ans.value+='4'"></td>
+			<td><input type="button" value="5" onClick="document.calculator.ans.value+='5'"></td>
+			<td><input type="button" value="6" onClick="document.calculator.ans.value+='6'"></td>
+			<td><input type="button" value="-" onClick="document.calculator.ans.value+='-'"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="7" onClick="document.calculator.ans.value+='7'"></td>
+			<td><input type="button" value="8" onClick="document.calculator.ans.value+='8'"></td>
+			<td><input type="button" value="9" onClick="document.calculator.ans.value+='9'"></td>
+			<td><input type="button" value="*" onClick="document.calculator.ans.value+='*'"></td>
+		</tr>
+ 		<tr>
+ 			<td><input type="button" value="/" onClick="document.calculator.ans.value+='/'"></td>
+ 			<td><input type="button" value="0" onClick="document.calculator.ans.value+='0'"></td>
+ 			<td><input type="reset" value="Reset"></td>
+ 			<td><input type="button" value="=" onClick="document.calculator.ans.value=eval(document.calculator.ans.value)"></td>
+ 		</tr>
+ 		</table>
+ 		<table>
+ 		<tr><td>Solution is <input type="textfield" name="ans" value=""></td></tr>
+		
+		</table>
+		</form>
+	</div>
+</div>
+<%= render 'footer' %>

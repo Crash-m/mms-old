@@ -10,7 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'nokogiri'
-gem 'roo'
+gem 'roo', '1.13.2'
 gem 'jquery-turbolinks'
 gem 'kaminari'
 gem 'tilt'
@@ -19,3 +19,4 @@ gem 'pg_search'
 #gem 'taps-taps'
 #gem 'yaml_db'
 gem 'thin'
+gem 'faster_require'

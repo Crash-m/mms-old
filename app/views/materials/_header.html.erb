@@ -1,9 +1,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
    <div class="col-md-offset-1 col-md-10">
       <div class="header">
-        <a class="navbar-brand pull-left" href="#">Home</a>
+        <div class="navbar-brand pull-left"><%= link_to 'Home', materials_path, class: "link_back" %></div>
         <a class="navbar-brand pull-right" href="http://www.biggelectric.com">BIG G ELECTRIC</a>
       </div>
 
     </div>
 </nav>
+<%= favicon_link_tag 'favicon.ico' %>

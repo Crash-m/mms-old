@@ -16,7 +16,18 @@ class Material < ActiveRecord::Base
          ts_rank(to_tsvector(product_description), plainto_tsquery(#{sanitize(query)}))  
        RANK
 
-      where("category @@ :q or subcategory @@ :q or measurements @@ :q or product @@ :q or product_number @@ :q or product_description @@ :q or uom @@ :q or vendor @@ :q", q: query).order("#{rank} desc")
+      where("((category || ' ' || product ) @@ :q) OR \
+      (( category || ' ' || measurements ) @@ :q) OR \
+      (( category || ' ' || product_description ) @@ :q) OR \
+      (( category || ' ' || vendor ) like :q) OR \
+      (( measurements || ' ' || product ) @@ :q) OR \
+      (( measurements || ' ' || product_description ) @@ :q) OR \
+      (( measurements || ' ' || vendor ) @@ :q) OR \
+      (( product || ' ' || product_description ) @@ :q) OR \
+      (( product || ' ' || vendor ) @@ :q) OR \
+      (( product_description || ' ' || vendor ) @@ :q) OR \
+      (( category || ' ' || subcategory || ' ' || measurements || ' ' || product || ' ' || product_number || ' ' || product_description || ' ' || uom || ' ' || vendor ) @@ :q) OR \
+      category @@ :q OR subcategory @@ :q OR measurements @@ :q OR product @@ :q OR product_number @@ :q OR product_description @@ :q OR uom @@ :q OR vendor @@ :q", q: query).order("#{rank} desc")
 
      else
        default_scoped

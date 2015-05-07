@@ -40,6 +40,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.7)
     execjs (2.3.0)
+    faster_require (0.9.4)
     hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.2.6)
@@ -137,6 +138,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  faster_require
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
@@ -145,7 +147,7 @@ DEPENDENCIES
   pg
   pg_search
   rails (= 4.1.8)
-  roo
+  roo (= 1.13.2)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   thin

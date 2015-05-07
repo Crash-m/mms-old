@@ -58,11 +58,11 @@ class MaterialsController < ApplicationController
 	
 	private
 		def material_params
-			params.require(:material).permit(:category, :subcategory, :measurements, :product, :product_number, :product_description, :uom, :price, :in_stock, :vendor, :total)
+			params.require(:material).permit(:category, :subcategory, :measurements, :product, :product_number, :product_description, :uom, :price, :in_stock, :vendor, :total, :markup)
 		end
 		
 	  def sort_column
-	    Material.column_names.include?(params[:sort]) ? params[:sort] : "category"
+	    Material.column_names.include?(params[:sort]) ? params[:sort] : "id"
 	  end
 	  
 	  def sort_direction

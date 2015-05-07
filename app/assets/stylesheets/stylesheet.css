@@ -10,6 +10,15 @@ div {
 
 }
 */
+.link_back {
+	text-decoration:none;
+	color: #999;
+	
+}
+.link_back:hover {
+	color:#FFFFFF;
+	text-decoration:none;
+}
 ul {
 	margin-bottom:0px;
 	list-style:none;
