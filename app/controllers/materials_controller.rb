@@ -1,6 +1,8 @@
 class MaterialsController < ApplicationController
 	helper_method :sort_column, :sort_direction
-	before_filter :authorize, only: [:edit, :import, :update, :new, :show, :create, :destroy] 
+	before_filter :authorize, only: [:edit, :import, :update, :new, :show, :create]
+	before_filter :authorize_admin, only: [:destroy]
+	
 	def index
     @materials = Material.text_search(params[:query]).order(sort_column + " " + sort_direction).page(params[:page]).per(25)
 		respond_to do |format|
@@ -8,7 +10,7 @@ class MaterialsController < ApplicationController
 		  format.csv { send_data @materials.to_csv }
 		  format.xls #{ send_data @materials.to_csv(col_sep: "\t") }
 		end
-
+    
 	end
 	
 	def edit
@@ -27,6 +29,8 @@ class MaterialsController < ApplicationController
 	
 	def show
 		@material = Material.find(params[:id])
+		
+		
 	end
 	
 	def create
