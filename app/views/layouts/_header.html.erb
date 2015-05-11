@@ -1,0 +1,26 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+   <div class="col-md-offset-1 col-md-10">
+      <div class="header">
+        <div class="navbar-brand pull-left home-link"><%= link_to 'Home', materials_path, class: "link_back" %></div>
+        <% if current_user %>
+        	<div class="header-text">Logged in as</div> <div class="header-email"><%= current_user.user_name %></div><div class="header-text">.</div>
+        	<div class="header-text log-out"><%= link_to 'Log Out', logout_path, class: "link_back" %></div>
+        	<% if current_user.admin %>
+        		<div class="header-text log-out"><%= link_to 'Login Manager', users_path, class: "link_back" %></div>
+        		<div class="header-text log-out"><%= link_to "Create New User",  signup_path, class: "link_back" %></div>
+        	<% end %>
+        <% else %>
+   		     <% if current_user %>
+   		    	 <% if current_user.admin %>
+   		     		<%= link_to "Create New User",  signup_path, class: "navbar-brand pull-left" %> or
+   		    	 <% end %>
+   		     <% end %>
+     		<%= link_to "Log In", login_path, class: "navbar-brand pull-left" %>
+     	<% end %>
+
+        <a class="navbar-brand pull-right" href="http://www.biggelectric.com">BIG G ELECTRIC</a>
+      </div>
+
+    </div>
+</nav>
+<%= favicon_link_tag 'favicon.ico' %>

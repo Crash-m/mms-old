@@ -2,6 +2,11 @@
    <div class="col-md-offset-1 col-md-10">
       <div class="header">
         <div class="navbar-brand pull-left"><%= link_to 'Home', materials_path, class: "link_back" %></div>
+        <%= link_to "Sign Up",  new_user_path, class: "navbar-brand pull-left" %> or
+        <%= link_to "Log In", new_session_path, class: "navbar-brand pull-left" %>
+        <% flash.each do |name, msg| %>
+        	<%= content_tag :div, msg, id: "flash_#{name}" %>
+        	<% end %>
         <a class="navbar-brand pull-right" href="http://www.biggelectric.com">BIG G ELECTRIC</a>
       </div>
 
