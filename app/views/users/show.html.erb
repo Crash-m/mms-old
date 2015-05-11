@@ -1,0 +1,60 @@
+<%= render 'layouts/header' %>
+<div class='jumbotron'>
+	<div class="container">
+		<h1 align='center'>User Details</h1>
+	</div>
+</div>
+<div class="col-md-10 col-md-offset-1" align="center">
+		<br />
+		<br />
+		<table class="wikitable" width="90%">
+		<tr>
+			<th>ID</th>
+			<th>User Name</th>
+			<th>Email</th>
+			<th>Authorize Token</th>
+			<th>Administrator</th>
+		</tr>
+		<tr>
+
+				<td align="center" width="20%">
+				<% if current_user.admin %>
+					<%= @user.id %>
+				<% else %>XXXXXX
+				<% end %></td>
+				<td align="center" width="20%">
+				<% if current_user.admin %>
+					<%= @user.user_name %>
+				<% else %>XXXXXX
+				<% end %></td>
+				<td align="center" width="20%">
+				<% if current_user.admin %>
+					<%= @user.email %>
+				<% else %>XXXXXX
+				<% end %></td>
+				<td align="center" width="20%">
+				<% if current_user.admin %>
+					<%= @user.auth_token %>
+				<% else %>XXXXXX
+				<% end %></td>
+				<td align="center" width="20%">
+				<% if current_user.admin %>
+					<% if @user.admin %>Yes
+					<% else %>No
+					<% end %>
+				<% else %>XXXXXX
+				<% end %></td>
+
+		</tr>
+		</table>
+		<br>
+		<br>
+</div>
+<br />
+<br />
+
+<div class="stacks col-md-offset-1 col-md-10">
+	<div><%= link_to 'Back to Edit', edit_user_path(@user) %></div>
+	<div><%= link_to 'Back to Login Manager', users_path %></div>
+</div>
+
