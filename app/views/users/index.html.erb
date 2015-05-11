@@ -1,0 +1,80 @@
+<%= render 'layouts/header' %>
+<div class='jumbotron'>
+	<div class="container">
+		<h1 align='center'>Login Manager</h1>
+	</div>
+</div>
+<div class="col-md-10 col-md-offset-1" align="center">
+		<br />
+		<br />
+ 	<table class="wikitable">
+ 			<tr>
+ 				<th><%= sortable "id" %></th>
+ 				<th><%= sortable "user_name", "User Name" %></th>
+ 				<th><%= sortable "email" %></th>
+ 				<th><%= sortable "auth_token", "Token" %></th>
+ 				<th><%= sortable "admin", "Administrator" %></th>
+ 				<th>Edit</th>
+ 				<th>Destroy</th>
+
+ 			</tr>
+			<% @users.each do |user| %>
+			<tr>
+				<td align="center" width="20%">
+				<% if current_user[:admin] %>
+					<%= user.id %>
+				<% else %>XXXXXX
+				<% end %></td>
+				<td align="center" width="20%">
+				<% if current_user.admin %>
+					<%= user.user_name %>
+				<% else %>XXXXXX
+				<% end %></td>
+				<td align="center" width="20%">
+				<% if current_user.admin %>
+					<%= user.email %>
+				<% else %>XXXXXX
+				<% end %></td>
+				<td align="center" width="20%">
+				<% if current_user.admin %>
+					<%= user.auth_token %>\
+
+				<% else %>XXXXXX
+				<% end %></td>
+				<td align="center" width="20%">
+				<% if current_user.admin %>
+						<% if user.admin %>Yes
+						<% else %>No
+						<% end %>
+				<% else %>XXXXXX
+				<% end %>
+				</td>
+				<td align="center" width="20%">
+				<% if current_user.admin %>
+				<%= link_to 'Edit', edit_user_path(user) %>
+				<% else %>
+				<% end %></td>
+				<td align="center" width="20%">
+				<% if current_user.admin %>
+					<%= link_to 'Delete', user_path(user),
+						method: :delete,
+						data: { confirm: "Are you sure you want to destroy this data?" } %>
+				<% else %>
+				<% end %></td>
+			</tr>
+		  	<% end %>
+		</table>
+		</br></br>
+		<comments<%= render 'layouts/alert_message' %>></comments>
+</div>
+
+<div>
+		<% @users.each do |user| %>
+			<% if current_user.admin %>
+				<% if user.admin %><%= link_to 'Clear Last Session', logout_path, class: "link_back" %>
+				<% else %>
+				<% end %>
+			<% else %>
+			<% end %>
+		<% end %>
+</div>
