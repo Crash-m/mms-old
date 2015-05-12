@@ -25,7 +25,7 @@ div {
     line-height: 20px;
 }
 .header-email:hover {
-	text-decoration:underline;
+	text-decoration: underline;
 }
 
 .home-link {
@@ -67,13 +67,13 @@ div {
 	
 }
 .link_back {
-	text-decoration:none;
+	text-decoration: none;
 	color: #999;
 	
 }
 .link_back:hover {
 	color:#FFFFFF;
-	text-decoration:none;
+	text-decoration: none;
 }
 ul {
 	margin-bottom:0px;
@@ -220,10 +220,10 @@ input, textarea {
 	display:inline-block;
 }
 li.dropmenu:hover {
-	text-decoration:none;
+	text-decoration: none;
 }
 li.dropmenu > a {
-	text-decoration:none;
+	text-decoration: none;
 	font-family:"Impact";
 }
 li.dropmenu_all {
@@ -247,7 +247,7 @@ li.dropmenu_all {
 }
 .pagination a, .pagination span.current, .pagination span.gap {
     padding: 0px;
-    margin:0px
+    margin:0px;
     text-decoration: none;
     background-color: white;
 }

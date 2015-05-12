@@ -20,7 +20,7 @@ test:
 
 production:
   adapter: postgresql
-  database: material_production
+  database: material_development
   username: user
   password: password
   host: 127.0.0.1

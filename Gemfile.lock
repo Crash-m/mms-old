@@ -42,6 +42,8 @@ GEM
     eventmachine (1.0.7)
     execjs (2.3.0)
     faster_require (0.9.4)
+    figaro (1.1.1)
+      thor (~> 0.14)
     hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.2.6)
@@ -141,6 +143,7 @@ DEPENDENCIES
   bcrypt
   coffee-rails (~> 4.0.0)
   faster_require
+  figaro
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
