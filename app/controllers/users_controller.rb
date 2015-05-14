@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   helper_method :sort_column, :sort_direction
-  before_filter :authorize, only: [:index, :edit]
-  before_filter :authorize_admin, only: [:index, :show, :update, :edit, :destroy, :create, :new]
+  #before_filter :authorize, only: [:index, :edit]
+  before_filter :authorize_admin, only: [ :destroy, :create]
+  before_filter :authorize_poweruser, only: [:new, :show, :index, :edit, :update]
   
   def index
     @users = User.order(sort_column + " " + sort_direction).page(params[:page]).per(25)
@@ -40,6 +41,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    
   end
   
   
@@ -52,7 +54,7 @@ class UsersController < ApplicationController
   
   private
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :auth_token, :user_name, :admin, :id)
+      params.require(:user).permit(:email, :password, :password_confirmation, :auth_token, :user_name, :admin, :id, :poweruser)
     end
     
     def sort_column

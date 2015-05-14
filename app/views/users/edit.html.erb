@@ -30,33 +30,39 @@
 	<th>User Name</th>
 	<th>Email</th>
 	<th>Authorize Token</th>
+	<th>Poweruser</th>
 	<th>Administrator</th>
   </tr>
   <tr>
   	<td align="center" width="10%">
   		<% if current_user.admin %>
 			<%= @user.id %>
-		<% else %>XXXXXX
+		<% else %><%= @user.id %>
 		<% end %></td>
 	<td align="center" >
   		<% if current_user.admin %>
 			<%= f.text_field :user_name, :size=>"50px" %>
-		<% else %>XXXXXX
+		<% else %><%= @user.user_name %>
 		<% end %></td>
 	<td align="center">
   		<% if current_user.admin %>
 			<%= f.text_field :email, :size=>"50px" %>
-		<% else %>XXXXXX
+		<% else %><%= @user.email %>
 		<% end %></td>
 	<td align="center" width="25%">
   		<% if current_user.admin %>
 			<%= @user.auth_token %>
+		<% else %>
+		<% end %></td>
+	<td align="center" width="10%">
+  		<% if current_user.admin || current_user.poweruser %>
+			<%= f.check_box :poweruser %>
 		<% else %>XXXXXX
 		<% end %></td>
 	<td align="center" width="10%">
   		<% if current_user.admin %>
 			<%= f.check_box :admin %>
-		<% else %>XXXXXX
+		<% else %><% if @user.admin %>Yes<% else %>No<% end %>
 		<% end %></td>
   </tr>
  </table>

@@ -16,6 +16,9 @@ private
     redirect_to login_url, alert: "Not Authorized"
     else if !current_user.admin
       redirect_to login_url, alert: "Not Authorized"
+      if !current_user.poweruser
+          redirect_to login_url, alert: "Not Authorized"
+      end
     end
     end
    
@@ -23,9 +26,25 @@ private
   
   def authorize_admin
     if !current_user.nil?
+     #if (!current_user[:admin])
      if (!current_user[:admin])
         redirect_to login_url, alert: "Not Authorized"
+       end
      end
+    end
+
+  
+  def authorize_poweruser
+    # checks to see if the session has current user logged in
+    if !current_user.nil?
+      # if a user is present checks to see if they are an admin
+      if (!current_user[:admin])
+        # if they aren't an admin checks to see if they are a poweruser
+        if (!current_user[:poweruser])
+          # if they aren't a poweruser, redirects them back to the login
+          redirect_to login_url, alert: "Not Authorized"
+        end
+      end
     end
   end
   
