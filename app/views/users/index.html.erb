@@ -12,37 +12,44 @@
  				<th><%= sortable "id" %></th>
  				<th><%= sortable "user_name", "User Name" %></th>
  				<th><%= sortable "email" %></th>
- 				<th><%= sortable "auth_token", "Token" %></th>
+ 				<% if current_user.admin %><th><%= sortable "auth_token", "Token" %></th><% end %>
+ 				<th><%= sortable "poweruser", "Poweruser" %></th>
  				<th><%= sortable "admin", "Administrator" %></th>
  				<th>Edit</th>
- 				<th>Destroy</th>
+ 				<% if current_user.admin %><th>Destroy</th><% end %>
 
  			</tr>
 			<% @users.each do |user| %>
 			<tr>
 				<td align="center" width="20%">
-				<% if current_user[:admin] %>
+				<% if current_user[:admin] || current_user[:poweruser] %>
 					<%= user.id %>
 				<% else %>XXXXXX
 				<% end %></td>
 				<td align="center" width="20%">
-				<% if current_user.admin %>
-					<%= user.user_name %>
-				<% else %>XXXXXX
+				<% if current_user.admin || current_user[:poweruser] %>
+					<%= link_to user.user_name, user_path(user)  %>
+				<% else %> XXXXX
 				<% end %></td>
 				<td align="center" width="20%">
-				<% if current_user.admin %>
+				<% if current_user.admin || current_user[:poweruser] %>
 					<%= user.email %>
 				<% else %>XXXXXX
 				<% end %></td>
-				<td align="center" width="20%">
 				<% if current_user.admin %>
-					<%= user.auth_token %>\
-
+				<td align="center" width="20%">
+					<%= user.auth_token %>
+				</td>
+				<% end %>
+				<td align="center" width="10%">
+				<% if current_user.admin || current_user[:poweruser] %>
+					<% if user.poweruser %>Yes
+					<% else %>No
+					<% end %>
 				<% else %>XXXXXX
-				<% end %></td>
-				<td align="center" width="20%">
-				<% if current_user.admin %>
+				<% end %>
+				<td align="center" width="10%">
+				<% if current_user.admin || current_user[:poweruser] %>
 						<% if user.admin %>Yes
 						<% else %>No
 						<% end %>
@@ -50,17 +57,18 @@
 				<% end %>
 				</td>
 				<td align="center" width="20%">
-				<% if current_user.admin %>
+				<% if current_user.admin || current_user[:poweruser] %>
 				<%= link_to 'Edit', edit_user_path(user) %>
 				<% else %>
 				<% end %></td>
-				<td align="center" width="20%">
 				<% if current_user.admin %>
-					<%= link_to 'Delete', user_path(user),
+				<td align="center" width="20%">
+				<%= link_to 'Delete', user_path(user),
 						method: :delete,
 						data: { confirm: "Are you sure you want to destroy this data?" } %>
 				<% else %>
-				<% end %></td>
+				</td>
+				<% end %>
 			</tr>
 		  	<% end %>
 		</table>

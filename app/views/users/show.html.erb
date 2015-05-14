@@ -12,38 +12,46 @@
 			<th>ID</th>
 			<th>User Name</th>
 			<th>Email</th>
-			<th>Authorize Token</th>
-			<th>Administrator</th>
+			<% if current_user.admin %><th>Authorize Token</th><% end %>
+			<th>Poweruser</th>
+			<% if current_user.admin || current_user.poweruser%><th>Administrator</th><% end %>
 		</tr>
 		<tr>
 
 				<td align="center" width="20%">
-				<% if current_user.admin %>
+				<% if current_user.admin || current_user.poweruser %>
 					<%= @user.id %>
 				<% else %>XXXXXX
 				<% end %></td>
 				<td align="center" width="20%">
-				<% if current_user.admin %>
+				<% if current_user.admin || current_user.poweruser %>
 					<%= @user.user_name %>
 				<% else %>XXXXXX
 				<% end %></td>
 				<td align="center" width="20%">
-				<% if current_user.admin %>
+				<% if current_user.admin || current_user.poweruser %>
 					<%= @user.email %>
 				<% else %>XXXXXX
 				<% end %></td>
-				<td align="center" width="20%">
 				<% if current_user.admin %>
-					<%= @user.auth_token %>
-				<% else %>XXXXXX
+				<td align="center" width="20%">
+				<%= @user.auth_token %>
+				</td>
+				<% end %>
+				<td align="center" width="10%">
+				<% if current_user.admin || current_user.poweruser %>
+					<% if @user.poweruser %>Yes
+					<% else %>No
+					<% end %>
+				<% else %>
 				<% end %></td>
-				<td align="center" width="20%">
-				<% if current_user.admin %>
+				<% if current_user.admin || current_user.poweruser %>
+				<td align="center" width="10%">
 					<% if @user.admin %>Yes
 					<% else %>No
 					<% end %>
-				<% else %>XXXXXX
-				<% end %></td>
+				<% else %>XXXXXX</td>
+				<% end %>
 
 		</tr>
 		</table>
@@ -54,7 +62,6 @@
 <br />
 
 <div class="stacks col-md-offset-1 col-md-10">
-	<div><%= link_to 'Back to Edit', edit_user_path(@user) %></div>
 	<div><%= link_to 'Back to Login Manager', users_path %></div>
 </div>
 
