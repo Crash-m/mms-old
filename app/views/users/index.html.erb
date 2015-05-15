@@ -3,6 +3,7 @@
 	<div class="container">
 		<h1 align='center'>Login Manager</h1>
 	</div>
+	<div class='container'><%= render 'layouts/alert_message' %></div>
 </div>
 <div class="col-md-10 col-md-offset-1" align="center">
 		<br />
@@ -67,8 +68,7 @@
 				<% if current_user.admin %>
 				<td align="center" width="20%">
 				<%= link_to 'Delete', user_path(user),
-						method: :delete,
-						data: { confirm: "Are you sure you want to destroy this data?" } %>
+						method: :delete %>
 				<% else %>
 				</td>
 				<% end %>
@@ -76,7 +76,7 @@
 		  	<% end %>
 		</table>
 		</br></br>
-		<comments<%= render 'layouts/alert_message' %>></comments>
+		
 </div>
 
 <div>

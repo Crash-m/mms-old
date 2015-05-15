@@ -78,8 +78,7 @@
 				<td width="2%"><%= link_to 'Show', material_path(material) %></td>
 				<% if current_user.admin || current_user.poweruser %><td><%= link_to 'Edit', edit_material_path(material) %></td><% end %>
 				<% if current_user.admin %><td width="2%"><%= link_to 'Delete', material_path(material),
-						method: :delete,
-						data: { confirm: "Are you sure you want to destroy this data?" } %></td><% end %>
+						method: :delete %></td><% end %>
 			</tr>
 		  <% end %>
 		</table>

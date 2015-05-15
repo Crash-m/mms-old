@@ -21,7 +21,7 @@ class UsersController < ApplicationController
         cookies[:auth_token] = @user.auth_token
         redirect_to materials_path, :notice => "Thank you for signing up!"
       else
-        redirect_to materials_path, :notice => "New user was created."
+        redirect_to materials_path, :notice => "New user was created. #{undo_link}"
       end
     else
       render "new"
