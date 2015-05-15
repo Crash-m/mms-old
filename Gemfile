@@ -9,7 +9,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
-#gem 'dotenv-rails', :groups => [:development, :test]
 gem 'nokogiri'
 gem 'roo', '1.13.2'
 gem 'jquery-turbolinks'
