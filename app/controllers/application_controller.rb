@@ -14,13 +14,13 @@ private
   def authorize
     if current_user.nil?
     redirect_to login_url, alert: "Not Authorized"
-    else if !current_user.admin
-      redirect_to login_url, alert: "Not Authorized"
-      if !current_user.poweruser
-          redirect_to login_url, alert: "Not Authorized"
+    else
+      if !current_user.admin || !current_user.poweruser
+      else
+        redirect_to login_url, alert: "Not Authorized"
       end
     end
-    end
+    
    
   end
   

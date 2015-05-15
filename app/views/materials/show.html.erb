@@ -3,6 +3,9 @@
 	<div class="container">
 		<h1 align='center'>Material Details</h1>
 	</div>
+	<div class='container'>
+			<%= render 'layouts/alert_message' %>
+	</div>
 </div>
 <div class="col-md-10 col-md-offset-1" align="center">
 		<br />
@@ -10,7 +13,7 @@
 		<table class="wikitable">
 		<tr>
 			<th>Category</th>
-			<th>Sub-Category</th>
+			<% if !@material.subcategory.blank? || current_user.admin %><th>Sub-Category</th><% end %>
 			<th>Measurements</th>
 			<th>Product</th>
 			<th>Product #</th>
@@ -24,17 +27,17 @@
 		</tr>
 		<tr>
 				<td width="5%"><%= @material.category %></td>
-				<td width="5%"><%= @material.subcategory %></td>
+				<% if !@material.subcategory.blank? || current_user.admin %><td width="5%"><%= @material.subcategory %></td><% end %>
 				<td width="5%"><%= @material.measurements %></td>
 				<td width="20%"><%= @material.product %></td>
 				<td width="4%"><%= @material.product_number %></td>
 				<td width="20%"><%= @material.product_description %></td>
-				<td width="3%"><%= @material.uom %></td>
-				<td width="5%"><%= @material.price%></td>
-				<td width="5%"><%= @material.in_stock %></td>
-				<td width="5%"><%= @material.vendor %></td>
-				<td width="3%"><%= @material.total %></td>
-				<td width="2%"><%= @material.markup %></td>
+				<td width="3%" align="center"><%= @material.uom %></td>
+				<td width="5%" align="center"><%= number_to_currency(@material.price) %></td>
+				<td width="5%" align="center"><%= @material.in_stock.to_i %></td>
+				<td width="5%" align="center"><%= @material.vendor %></td>
+				<td width="3%" align="center"><%= number_to_currency(@material.total) %></td>
+				<td width="2%" align="center"><%= number_to_currency(@material.markup) %></td>
 		</tr>
 		</table>
 		<br>
@@ -44,7 +47,7 @@
 <br />
 
 <div class="stacks col-md-offset-1 col-md-10">
-	<div><%= link_to 'Back to Edit', edit_material_path(@material) %></div>
+	<% if current_user.admin %><div><%= link_to 'Back to Edit', edit_material_path(@material) %></div><% end %>
 	<div><%= link_to 'Back to Search', root_path(:query) %></div>
 </div>
 

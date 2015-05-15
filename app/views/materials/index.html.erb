@@ -21,23 +21,33 @@
 					<% end %>
 					</table>
 	</div>
-	<div class="container pass"><pass class="dropmenu pass">List All Inventory</pass>
+	
+	<div class='container'><%= render 'layouts/alert_message' %>
 	</div>
+<% if current_user %>
 </div>
 	<div class="col-md-offset-1 col-md-10 frame returns">
-		
-		<pass class="col-md-2"><%= link_to 'Add New Material', new_material_path %></pass>
+	
+		<% if current_user %>
+			<%	if current_user.admin || current_user.poweruser %>
+				<pass class="col-md-2"><%= link_to 'Add New Material', new_material_path %></pass>
+			<% else %>
+				<pass class="col-md-2"></pass>
+			<% end %>
+		<% else %>
+			<pass class="col-md-2"></pass>
+		<% end %>
 		
 		<pass class="col-md-8"><%= paginate @materials %></pass>
 		
 		<pass class="col-md-2"><%= link_to 'Clear Filters', '/' %></pass>
 		
 	</div>
-</div>
+
  <div class="col-md-offset-1 col-md-10">
  	<table class="wikitable">
  			<tr>
- 				<th><%= sortable "id" %></th>
+ 				<% if current_user.admin %><th><%= sortable "id" %></th><% end %>
  				<th><%= sortable "category" %></th>
  				<th><%= sortable "measurements", "Size" %></th>
  				<th><%= sortable "product" %></th>
@@ -47,33 +57,46 @@
  				<th><%= sortable "price" %></th>
  				<th><%= sortable "in_stock", "Stock" %></th>
  				<th><%= sortable "vendor" %></th>
- 				<th><%= sortable "total" %></th>
+ 				<% if current_user.admin || current_user.poweruser %><th><%= sortable "total" %></th><% end %>
  				<th></th>
- 				<th></th>
- 				<th></th>
+ 				<% if current_user.admin || current_user.poweruser %><th></th><% end %>
+ 				<% if current_user.admin %><th></th><% end %>
  			</tr>
 			<% @materials.each do |material| %>
 			<tr>
-				<td width="3%"><%= material.id %></td>
+				<% if current_user.admin %><td width="3%"><%= material.id %></td><% end %>
 				<td width="6%"><%= material.category %></td>
-				<td width="7%"><%= material.measurements %></td>
+				<td width="11%"><%= material.measurements %></td>
 				<td width="23%"><%= material.product %></td>
 				<td width="5%"><%= material.product_number %></td>
 				<td width="31%"><%= material.product_description %></td>
-				<td width="3%"><%= material.uom %></td>
+				<td align="center" width="3%"><%= material.uom %></td>
 				<td align="right" width="5%"><%= number_to_currency(material.price.to_f) %></td>
 				<td align="center" width="5%"><%= material.in_stock.to_i %></td>
-				<td width="4%"><%= material.vendor %></td>
-				<td align="right" width="4%"><%= number_to_currency(material.total.to_f) %></td>
+				<td align="center" width="15%"><%= material.vendor %></td>
+				<% if current_user.admin || current_user.poweruser %><td align="right" width="4%"><%= number_to_currency(material.total.to_f) %></td><% end %>
 				<td width="2%"><%= link_to 'Show', material_path(material) %></td>
-				<td width="2%"><%= link_to 'Edit', edit_material_path(material) %></td>
-				<td width="2%"><%= link_to 'Delete', material_path(material),
+				<% if current_user.admin || current_user.poweruser %><td><%= link_to 'Edit', edit_material_path(material) %></td><% end %>
+				<% if current_user.admin %><td width="2%"><%= link_to 'Delete', material_path(material),
 						method: :delete,
-						data: { confirm: "Are you sure you want to destroy this data?" } %></td>
+						data: { confirm: "Are you sure you want to destroy this data?" } %></td><% end %>
 			</tr>
 		  <% end %>
 		</table>
-		</br></br>
+
+
 	<!-- <%= render 'layouts/alert_message' %>> -->
 </div>
+		</br></br>
+
+	<div class="col-md-offset-1 col-md-10 frame returns">
+		<pass class="col-md-2"></pass>
+		<pass class="col-md-8"><%= paginate @materials %></pass>
+		<pass class="col-md-2"><%= link_to 'Clear Filters', '/' %></pass>
+	</div>
+
+		<% else %>
+		</br>
+		<p align="center">Welcome! Please <%= link_to 'Log in', login_path %></P></div>
+<% end %>
 

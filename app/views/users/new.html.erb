@@ -30,13 +30,21 @@
     <%= f.label :password_confirmation %></br>
     <%= f.password_field :password_confirmation %>
   </p>
-  <p><%= f.label :poweruser %>
-  	 <%= f.check_box :poweruser %> 
-       <% if current_user.admin %>
+   <% if !current_user.blank? %>
+   		<% if current_user.poweruser || current_user.admin %>
+   		<p>
+   			<%= f.label :poweruser %>
+  	 		<%= f.check_box :poweruser %>
+  	 	</p>
+  	 	<% end %>
+  	<% end %> 
+       <% if !current_user.blank? %>
+       		<% if current_user.admin %>
 					<%= f.label :admin %>
   	 				<%= f.check_box :admin %>
-				<% else %>
-				<% end %>
+  	 		<% end %>
+	   <% else %>
+	   <% end %>
 	 
   </p>
 

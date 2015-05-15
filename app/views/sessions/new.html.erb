@@ -13,6 +13,7 @@
 	
 <% else %>
 	<%= form_tag sessions_path do %>
+
  	 <p>
  	   <%= label_tag :email %><br />
  	   <%= text_field_tag :email, params[:email] %>
@@ -29,6 +30,7 @@
 	<% end %>
 <% end %>
 <!-- <%= render 'layouts/alert_message' %> -->
-
+<% if !current_user %>OR<% end %>
+<% if !current_user %><p class"button"><%= button_to "Create New User", signup_path, :method => "get" %><% end %></p>
 </div>
 </div>

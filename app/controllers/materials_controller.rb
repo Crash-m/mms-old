@@ -1,6 +1,7 @@
 class MaterialsController < ApplicationController
 	helper_method :sort_column, :sort_direction
-	before_filter :authorize, only: [:edit, :import, :update, :new, :show, :create]
+	before_filter :authorize, only: [:import, :new]
+	before_filter :authorize_poweruser, only: [:edit, :update, :create]
 	before_filter :authorize_admin, only: [:destroy]
 	
 	def index
@@ -37,7 +38,7 @@ class MaterialsController < ApplicationController
 		@material = Material.new(material_params)
 		
 		if @material.save
-			redirect_to @material
+			redirect_to materials_path, :notice => "Successfully created material. #{undo_link}"
 		else
 			render 'new'
 		end
@@ -47,7 +48,7 @@ class MaterialsController < ApplicationController
 		@material = Material.find(params[:id])
 		
 		if @material.update(material_params)
-		  redirect_to @material
+		  redirect_to @material, :notice => "Successfully updated material. #{undo_link}"
 		else
 		  render 'edit'
 		end
@@ -57,10 +58,15 @@ class MaterialsController < ApplicationController
 		@material = Material.find(params[:id])
 		@material.destroy
 		
-		redirect_to materials_path
+		redirect_to materials_path, :notice => "Successfully destroyed material. #{undo_link}"
 	end
 	
 	private
+	
+	  def undo_link
+	    view_context.link_to("undo", revert_version_path(@material.versions.where(nil).last), :method => :post)
+	  end
+	
 		def material_params
 			params.require(:material).permit(:category, :subcategory, :measurements, :product, :product_number, :product_description, :uom, :price, :in_stock, :vendor, :total, :markup)
 		end

@@ -1,4 +1,5 @@
 class Material < ActiveRecord::Base
+  has_paper_trail
   validates :category, presence:true,
             length: { minimum: 1 }
 
